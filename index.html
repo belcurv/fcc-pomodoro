@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>FCC Pomodoro Timer</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <section class="container">
+       
+        <h1 class="title">POMODORO</h1>
+        
+        <div class="controls">
+            <div class="control-break-length">
+                <p>BREAK LENGTH</p>
+                <div id="break-minus" class="btn">-</div>
+                <span id="break-length">5</span>
+                <div id="break-plus" class="btn">+</div>
+            </div>
+            <div class="control-session-length">
+                <p>SESSION LENGTH</p>
+                <div id="session-minus" class="btn">-</div>
+                <span id="break-length">25</span>
+                <div id="session-plus" class="btn">+</div>                
+            </div>
+        </div>
+        
+        <div class="session">
+            <h2>SESSION</h2>
+            
+            <div id="timer">25</div>
+            
+        </div>
+        
+    </section>
+
+    <footer class="belcurv-footer"></footer>
+    
+    <!-- javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+/* basic reset */
+body,
+html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background: linear-gradient( #e1dbe5, #172e66 ) center center no-repeat fixed;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100vh;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.container {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+}
+
+/* ================================ controls =============================== */
+.controls {
+    width: 100%;text-align: center;
+}
+
+.controls > div {
+    display: inline-block;
+    margin: 0 2em;
+}
+
+.controls > div > label,
+.controls > div > input {
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 0 0 20px black;
+}
+
+.controls > div > input {
+    background: none;
+    border: none;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* footer */
+.belcurv-footer {
+    padding: 0.85em 0;
+    background: #404040;
+    color: #999;
+    text-align: center;
+    font-size: 13px;
+}
+
+.belcurv-footer .footer-credit {
+    vertical-align: middle;
+}
+
+.belcurv-footer .github-icon {
+    display: inline-block;
+    fill: rgb(255, 255, 255);
+    vertical-align: middle;
+}
+
+.belcurv-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.belcurv-footer a:hover {
+    text-decoration: underline;
+}
