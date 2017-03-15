@@ -1,6 +1,7 @@
 /* basic reset */
 body,
 html {
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -9,14 +10,10 @@ html {
 
 body {
     background: linear-gradient( #e1dbe5, #172e66 ) center center no-repeat fixed;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    color: white;
     display: flex;
-    height: 100vh;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
     flex-direction: column;
+    height: 100vh;
 }
 
 .container {
@@ -26,14 +23,27 @@ body {
     width: 100%;
 }
 
+.title {
+    font-size: 3em;
+    margin: 0;
+    text-align: center;
+}
+
+.shadowbox {
+    background: rgba(0, 0, 0, 0.3);
+}
+
 /* ================================ controls =============================== */
 .controls {
-    width: 100%;text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 .controls > div {
+    border-radius: .5em;
     display: inline-block;
-    margin: 0 2em;
+    margin: 0;
+    padding: 0 2em;
 }
 
 .controls > div > label,
@@ -52,8 +62,30 @@ body {
     width: 100%;
 }
 
+/* ================================ session ================================ */
+.session {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
 
-/* footer */
+.session > p {
+    display: block;
+    width: 100%;
+}
+
+.timer {
+    margin: 0;
+    flex: 0 1 auto;
+    display: inline-block;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 8em;
+    padding: .5em;
+}
+
+
+/* ================================= footer ================================ */
 .belcurv-footer {
     padding: 0.85em 0;
     background: #404040;
