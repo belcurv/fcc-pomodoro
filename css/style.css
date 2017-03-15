@@ -7,6 +7,11 @@ html {
     padding: 0;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
 
 body {
     background: linear-gradient( #e1dbe5, #172e66 ) center center no-repeat fixed;
@@ -17,10 +22,11 @@ body {
 }
 
 .container {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
     flex: 1;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
 }
 
 .title {
@@ -35,38 +41,40 @@ body {
 
 /* ================================ controls =============================== */
 .controls {
+    margin: 20px 0;
     width: 100%;
     text-align: center;
 }
 
 .controls > div {
+    width: 180px;
     border-radius: .5em;
     display: inline-block;
     margin: 0;
-    padding: 0 2em;
+    padding: 1em 2em;
 }
 
-.controls > div > label,
-.controls > div > input {
-    color: white;
-    font-size: 2em;
-    font-weight: bold;
-    text-shadow: 0 0 20px black;
+.controls .btn,
+.controls span {
+    display: inline-block;
+    font-size: 1.5em;
 }
 
-.controls > div > input {
-    background: none;
-    border: none;
-    display: block;
-    text-align: center;
-    width: 100%;
+.controls .btn {
+    box-sizing: border-box;
+    line-height: 1em;
+    width: 1em;
+    border-radius: 50%;
 }
+
+
 
 /* ================================ session ================================ */
 .session {
+    height: 100%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    flex-flow: column;
+    align-items: center;
 }
 
 .session > p {
@@ -74,9 +82,14 @@ body {
     width: 100%;
 }
 
+.reset {
+    display: block;
+    width: auto;
+    transform: rotate(90deg)
+}
+
 .timer {
-    margin: 0;
-    flex: 0 1 auto;
+    margin: auto;
     display: inline-block;
     border-radius: 50%;
     display: inline-block;
@@ -87,7 +100,7 @@ body {
 
 /* ================================= footer ================================ */
 .belcurv-footer {
-    padding: 0.85em 0;
+    padding: 1em;
     background: #404040;
     color: #999;
     text-align: center;
