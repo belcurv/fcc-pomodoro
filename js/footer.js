@@ -7,9 +7,9 @@
     'use strict';
     
     var $footer  = $('footer'),
-        desc     = 'Calculator',
+        desc     = 'Pomodoro Timer',
         version  = '1.0.0',
-        link     = 'https://github.com/belcurv/fcc-calculator',
+        link     = 'https://github.com/belcurv/fcc-pomodoro',
         template = `
             <p class="footer-credit"> ${desc} : v${version} : by 
                 <a href="${link}" target="_blank">belcurv</a>
