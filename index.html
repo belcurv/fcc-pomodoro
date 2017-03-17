@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <title>FCC Pomodoro Timer</title>
-
+    
     <!-- stylesheets -->
     <link rel="stylesheet" href="css/style.css">
 
@@ -14,29 +14,34 @@
 
 <body>
 
-    <section class="container">
+    <section class="pomodoro">
        
         <p class="title shadowbox">FCC POMODORO</p>
         
         <div class="controls">
-            <div class="shadowbox">
+            <div id="break-ctrl" class="shadowbox">
                 <p>BREAK LENGTH</p>
                 <div id="break-minus" class="btn">&minus;</div>
-                <span id="break-length">5</span>
+                <span id="break-length"></span>
                 <div id="break-plus" class="btn">+</div>
             </div>
-            <div class="shadowbox">
+            <div id="session-ctrl" class="shadowbox">
                 <p>SESSION LENGTH</p>
                 <div id="session-minus" class="btn">&minus;</div>
-                <span id="session-length">25</span>
+                <span id="session-length"></span>
                 <div id="session-plus" class="btn">+</div>                
             </div>
         </div>
         
         <div class="session">
             <p class="title shadowbox">SESSION</p>
-            <div id="timer" class="timer shadowbox">25</div>
-            <div class="title reset">&orarr;</div>
+            <div id="timer" class="timer shadowbox">
+                <div id="time">
+                    <span id="minutes"></span>:<span id="seconds"></span>
+                </div>
+                <div id="reset">&orarr;</div>
+            </div>
+            
             
         </div>
         
