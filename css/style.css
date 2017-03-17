@@ -21,7 +21,7 @@ body {
     height: 100vh;
 }
 
-.container {
+.pomodoro {
     flex: 1;
     width: 100%;
     display: flex;
@@ -52,6 +52,13 @@ body {
     display: inline-block;
     margin: 0;
     padding: 1em 2em;
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
 }
 
 .controls .btn,
@@ -65,8 +72,12 @@ body {
     line-height: 1em;
     width: 1em;
     border-radius: 50%;
+    cursor: pointer;
 }
 
+.controls .btn:hover {
+    text-shadow: 0 0 20px #fff;
+}
 
 
 /* ================================ session ================================ */
@@ -82,19 +93,37 @@ body {
     width: 100%;
 }
 
-.reset {
-    display: block;
-    width: auto;
-    transform: rotate(90deg)
-}
-
 .timer {
+    height: 340px;
+    width: 340px;
     margin: auto;
     display: inline-block;
     border-radius: 50%;
-    display: inline-block;
-    font-size: 8em;
-    padding: .5em;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+#time {
+    margin: 0;
+    padding: 35% 0 0 0;
+    font-family: monospace;
+    font-size: 7em;
+    font-weight: 500;
+}
+
+#reset {
+    margin: auto;
+    padding: 0;
+    width: 1em;
+    transform: rotate(90deg);
+    font-size: 5em;
+    border-radius: 50%;
+    
+}
+
+#reset:hover {
+    text-shadow: 0 0 20px #fff;
 }
 
 
