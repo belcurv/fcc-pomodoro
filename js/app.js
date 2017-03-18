@@ -1,26 +1,22 @@
 /* jshint esversion:6 */
-/* globals jQuery, console, setTimeout, clearTimeout */
-
-/*
- * Javascrit Pomodoro-style timer
- *
- *
-*/
+/* globals jQuery, setTimeout, clearTimeout */
 
 (function ($) {
     
     'use strict';
     
+    /* =============================== setup =============================== */
     var breakLength = 5,
-        sessionLength = 2,
+        sessionLength = 25,
         minutes = sessionLength,
         seconds = 0,
         timerIsRunning = false,
-        timerState,
+        sessionState = 'Session',
+        timeoutState,
         DOM = {};   // cached DOM elements
         
 
-    /* =============================== setup =============================== */
+    /* ========================== private methods ========================== */
     
     // cache DOM elements
     function cacheDom() {
@@ -34,6 +30,7 @@
         DOM.$minutes       = DOM.$timer.find('#minutes');
         DOM.$seconds       = DOM.$timer.find('#seconds');
         
+        DOM.$sessionLabel  = DOM.$timer.find('#session');
         DOM.$Reset         = DOM.$timer.find('#reset');
     }
 
@@ -75,11 +72,13 @@
             if (!timerIsRunning) {
                 countDown();
             } else {
-                clearTimeout(timerState);
+                clearTimeout(timeoutState);
             }
             
             timerIsRunning = !timerIsRunning;
-        }         
+        }
+        
+        e.stopPropagation();
     }
     
     
@@ -104,13 +103,22 @@
         return ('0' + time).substr(-2);
     }
     
+    
     // countDown
     function countDown() {
         render();
         
         if (minutes === 0 && seconds === 0) {
-            timerIsRunning = false;
-            return;
+            if (sessionState === 'Session') {
+                sessionState = 'Break';
+                minutes = breakLength;
+            } else {
+                sessionState = 'Session';
+                minutes = sessionLength;
+            }
+            
+            playSound();
+            
         } else if (seconds <= 0 && minutes >= 0) {
             seconds = 59;
             minutes -= 1;
@@ -118,16 +126,26 @@
             seconds -= 1;
         }
         
-        timerState = setTimeout(countDown, 250);
+        timeoutState = setTimeout(countDown, 1000);
         
     }
     
     
+    // play alarm sound
+    function playSound() {
+        var alarm = new Audio('http://www.myinstants.com/media/sounds/alert-hq.mp3');
+        alarm.play();
+    }
+    
     
     // reset
     function reset() {
-        timerIsRunning = false;
+        if (timerIsRunning) {
+            timerIsRunning = false;
+            clearTimeout(timeoutState);
+        }        
         minutes = sessionLength;
+        sessionState = 'Session';
         seconds = 0;
         render();
     }
@@ -146,13 +164,23 @@
         DOM.$seconds.html(zeroPad(seconds));
     }
     
+    
+    // render timer label
+    function renderLabel() {
+        DOM.$sessionLabel
+            .toggleClass('redish', sessionState === 'Break')
+            .html(sessionState);
+    }
+    
+    
     // main renderer
     function render() {
         renderControls();
         renderTime();
+        renderLabel();
     }
     
-
+    
     // auto-init on page load
     (function init() {
         cacheDom();

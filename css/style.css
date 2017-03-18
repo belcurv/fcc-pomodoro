@@ -30,9 +30,12 @@ body {
 }
 
 .title {
-    font-size: 3em;
+    color: #333;
+    font-size: 4em;
+    font-weight: bold;
     margin: 0;
     text-align: center;
+    box-shadow: 0 0 10px 4px #333;
 }
 
 .shadowbox {
@@ -41,6 +44,7 @@ body {
 
 /* ================================ controls =============================== */
 .controls {
+    color: #333;
     margin: 20px 0;
     width: 100%;
     text-align: center;
@@ -48,7 +52,7 @@ body {
 
 .controls > div {
     width: 180px;
-    border-radius: .5em;
+    border-radius: 4px;
     display: inline-block;
     margin: 0;
     padding: 1em 2em;
@@ -64,7 +68,7 @@ body {
 .controls .btn,
 .controls span {
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
 .controls .btn {
@@ -88,16 +92,13 @@ body {
     align-items: center;
 }
 
-.session > p {
-    display: block;
-    width: 100%;
-}
-
 .timer {
     height: 340px;
     width: 340px;
     margin: auto;
-    display: inline-block;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
     border-radius: 50%;
     text-align: center;
     cursor: pointer;
@@ -107,27 +108,27 @@ body {
     box-shadow: 0 0 25px 5px #fff;
 }
 
-
-#time {
-    margin: 0;
-    padding: 35% 0 0 0;
-    font-family: monospace;
-    font-size: 7em;
-    font-weight: 500;
+.timer > p,
+.timer > #reset {
+    font-size: 4em;
 }
 
-#reset {
-    margin: auto;
-    padding: 0;
+.timer > #reset {
     width: 1em;
-    transform: rotate(90deg);
-    font-size: 5em;
-    border-radius: 50%;
-    
+    margin: 0 auto;
+}
+
+.timer #time {
+    font-family: monospace;
+    font-size: 7em;
 }
 
 #reset:hover {
     text-shadow: 0 0 20px #fff;
+}
+
+.redish {
+    color: rgba(255,50,50,1);
 }
 
 
