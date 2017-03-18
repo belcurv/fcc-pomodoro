@@ -1,5 +1,5 @@
 /* jshint esversion:6 */
-/* globals jQuery, console, RPN */
+/* globals jQuery, console, setTimeout, clearTimeout */
 
 /*
  * Javascrit Pomodoro-style timer
@@ -12,12 +12,16 @@
     'use strict';
     
     var breakLength = 5,
-        sessionLength = 25,
+        sessionLength = 2,
         minutes = sessionLength,
-        seconds = 59,
+        seconds = 0,
+        timerIsRunning = false,
+        timerState,
         DOM = {};   // cached DOM elements
         
 
+    /* =============================== setup =============================== */
+    
     // cache DOM elements
     function cacheDom() {
         
@@ -68,10 +72,14 @@
             
         } else {
             
-            countDown();
+            if (!timerIsRunning) {
+                countDown();
+            } else {
+                clearTimeout(timerState);
+            }
             
-        }
-        
+            timerIsRunning = !timerIsRunning;
+        }         
     }
     
     
@@ -87,21 +95,6 @@
     }
     
     
-    // countDown
-    function countDown() {
-        
-        if (seconds < 0 && minutes >= 0) {
-            minutes -= 1;
-        } else if (seconds > 0) {
-            console.log('here');
-            render();
-            seconds -= 1;
-            setTimeout(countDown, 1000);
-        }
-        
-        
-    }
-    
     /* zero pad single-digit minutes & seconds
      *
      * @param    [number]   time   [time]
@@ -111,9 +104,29 @@
         return ('0' + time).substr(-2);
     }
     
+    // countDown
+    function countDown() {
+        render();
+        
+        if (minutes === 0 && seconds === 0) {
+            timerIsRunning = false;
+            return;
+        } else if (seconds <= 0 && minutes >= 0) {
+            seconds = 59;
+            minutes -= 1;
+        } else if (seconds > 0) {
+            seconds -= 1;
+        }
+        
+        timerState = setTimeout(countDown, 250);
+        
+    }
+    
+    
     
     // reset
     function reset() {
+        timerIsRunning = false;
         minutes = sessionLength;
         seconds = 0;
         render();
@@ -129,7 +142,7 @@
     
     // render time
     function renderTime() {
-        DOM.$minutes.html(zeroPad(sessionLength));
+        DOM.$minutes.html(zeroPad(minutes));
         DOM.$seconds.html(zeroPad(seconds));
     }
     
